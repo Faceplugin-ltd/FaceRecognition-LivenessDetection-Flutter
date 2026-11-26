@@ -89,7 +89,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (v) => setState(() => _settings.threshold = v),
               ),
               Text(
-                'Luxand FaceSDK standard identity verification is 0.80. A gallery face '
+                'The standard threshold for identity verification is 0.80. A gallery face '
                 'matches at or above this value. 0.70 is convenience, 0.90 is high security.',
                 style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant),
               ),
@@ -109,8 +109,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 contentPadding: EdgeInsets.zero,
                 title: const Text('Liveness check'),
                 subtitle: const Text(
-                  'Reject photos of photos and screens before identifying. Luxand counts a '
-                  'face as live when its score is above 0.5.',
+                  'Reject photos of photos and screens before identifying. A face counts as '
+                  'live when its score is above 0.5.',
                 ),
                 value: _settings.liveness,
                 onChanged: (on) => setState(() => _settings.liveness = on),
