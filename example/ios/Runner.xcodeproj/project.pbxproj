@@ -272,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/scripts/sign_nested_facerecognitionsdk.sh\"\n";
+			shellScript = "/bin/bash \"${SRCROOT}/scripts/sign_nested_facerecognitionsdk.sh\"\n";
 		};
 		027F9BD1B5C0E5657E815C90 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
