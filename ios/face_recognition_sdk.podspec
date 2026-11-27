@@ -18,10 +18,8 @@ FacePlugin Face Recognition SDK — on-device face detect, templates, VideoWorke
   s.platform = :ios, '13.0'
   s.libraries = 'c++'
 
-  # Prefer .xcframework (CocoaPods links these into the pod target). Plain
-  # .framework is kept as a fallback drop from Drive, but alone it often only
-  # reaches the app OTHER_LDFLAGS and leaves undefined symbols when building
-  # face_recognition_sdk.framework under use_frameworks!.
+  # Prefer flat ios-arm64 *.framework (from runtime.zip via python3 run_ios.py /
+  # fp_releases.py). Fall back to xcframework / FacePlugin slice when present.
   frameworks = []
   missing = []
   %w[
@@ -33,7 +31,6 @@ FacePlugin Face Recognition SDK — on-device face detect, templates, VideoWorke
     xc = File.join(__dir__, 'Frameworks', "#{base}.xcframework")
     fw = File.join(__dir__, 'Frameworks', "#{base}.framework")
     # FacePPlugin is the ios-arm64 slice inside FacePlugin.xcframework.
-    # Vendor that slice so ld looks for -framework FacePPlugin, not FacePlugin.
     slice = File.join(__dir__, 'Frameworks', 'FacePlugin.xcframework', 'ios-arm64', "#{base}.framework")
     if File.directory?(fw)
       frameworks << "Frameworks/#{base}.framework"
@@ -51,8 +48,11 @@ FacePlugin Face Recognition SDK — on-device face detect, templates, VideoWorke
       Missing Face Recognition iOS frameworks (#{missing.size}):
       #{missing.map { |p| "  - #{p}" }.join("\n")}
 
-      Unzip the Drive iOS pack into ios/Frameworks/ (plugin root, not example/ios),
-      then run: dart run tool/bootstrap.dart && cd example/ios && pod install
+      From the plugin root run: python3 run_ios.py
+      (downloads runtime.zip into ios/Frameworks/ and slices device frameworks).
+      Or unzip runtime.zip from
+      https://github.com/Faceplugin-ltd/FaceRecognition-LivenessDetection-iOS/releases/tag/latest
+      into ios/Frameworks/, then: cd example/ios && pod install
     MSG
   end
   s.vendored_frameworks = frameworks
