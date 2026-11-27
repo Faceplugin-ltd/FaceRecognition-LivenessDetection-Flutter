@@ -80,7 +80,7 @@ static dispatch_queue_t FRSQueue(void) {
 static FlutterError *FRSMissingSdkError(void) {
   return [FlutterError
       errorWithCode:@"E_SDK"
-            message:@"facerecognitionsdk.framework not linked. Download from Google Drive and place under ios/Frameworks/."
+            message:@"facerecognitionsdk.framework not linked. Download runtime.zip from FaceRecognition-LivenessDetection-iOS Releases and place under ios/Frameworks/."
             details:nil];
 }
 

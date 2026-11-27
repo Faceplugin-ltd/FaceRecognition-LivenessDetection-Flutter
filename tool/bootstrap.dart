@@ -32,7 +32,7 @@ void main() async {
   } else {
     missing(
       exampleAar.path,
-      'For the demo: copy facerecognitionsdk.aar from Google Drive '
+      'For the demo: copy facerecognitionsdk.aar from GitHub Releases '
       '(FaceRecognitionSDK Android pack) into example/android/libfacesdk/.',
     );
   }
@@ -73,7 +73,7 @@ void main() async {
         allPresent = false;
         missing(
           fw.path,
-          'Unzip from Google Drive (FaceRecognitionSDK iOS pack) into ios/Frameworks/.',
+          'Unzip runtime.zip from FaceRecognition-LivenessDetection-iOS Releases into ios/Frameworks/.',
         );
       }
     }
